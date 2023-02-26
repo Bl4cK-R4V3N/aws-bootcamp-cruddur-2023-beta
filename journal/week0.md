@@ -33,6 +33,49 @@ https://docs.aws.amazon.com/account-billing/index.html
 To open the Billing console and view your usage and charges
 Sign into the AWS Management Console and open the Billing console at https://console.aws.amazon.com/billing/.
 
+
+
+Creating a Billing Alarm
+Create SNS Topic
+We need an SNS topic before we create an alarm.
+The SNS topic is what will delivery us an alert when we get overbilled
+aws sns create-topic
+We'll create a SNS Topic
+
+aws sns create-topic --name billing-alarm
+which will return a TopicARN
+
+We'll create a subscription supply the TopicARN and our Email
+
+aws sns subscribe \
+    --topic-arn TopicARN \
+    --protocol email \
+    --notification-endpoint your@email.com
+Check your email and confirm the subscription
+
+Create Alarm
+aws cloudwatch put-metric-alarm
+Create an Alarm via AWS CLI
+We need to update the configuration json script with the TopicARN we generated earlier
+We are just a json file because --metrics is is required for expressions and so its easier to us a JSON file.
+aws cloudwatch put-metric-alarm --cli-input-json file://aws/json/alarm_config.json
+Create an AWS Budget
+aws budgets create-budget
+
+Get your AWS Account ID
+
+aws sts get-caller-identity --query Account --output text
+Supply your AWS Account ID
+Update the json files
+This is another case with AWS CLI its just much easier to json files due to lots of nested json
+aws budgets create-budget \
+    --account-id AccountID \
+    --budget file://aws/json/budget.json \
+    --notifications-with-subscribers file://aws/json/budget-notifications-with-subscribers.json
+
+
+
+
 Choose Bills to see details about your current charges.
 
 Choose Payments to see your historical payment transactions.
