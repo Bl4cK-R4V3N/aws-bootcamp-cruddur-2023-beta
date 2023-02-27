@@ -56,3 +56,36 @@ https://lucid.app/lucidchart/544c8c2f-b7ff-4f7c-87fb-e7283d98dd27/edit?viewport_
 
 
 
+----------------------------------------------------------------------------
+
+** Homework Challenges**
+**Destroy your root account credentials, Set MFA, IAM role**
+- I've tried to lock my root account by providing wrong password but without any big success. During my attempts I've provided proper email adress and wrong password. Next I was asked for MFA code and captcha. At the begininig I provided wrong one but with no success in blocking account I used correct one but still with no results.
+- MFA for my root account was enabled from the begining 
+![image](https://user-images.githubusercontent.com/125925180/221606852-bd21ccff-3e95-4050-84fa-971396306039.png)
+
+
+![image](https://user-images.githubusercontent.com/125925180/221606276-097bf8dc-8cc6-487c-a1cd-bb22a51e91e6.png)
+
+- IAM role 
+  During the training, I created a new account and added the IAM role AdministratorAccess to it which provides full access to AWS services and resources.
+
+  ![image](https://user-images.githubusercontent.com/125925180/221609591-842b9908-1a27-4e97-809f-e134ffc44208.png)
+
+Notes:
+You can't use IAM policies to explicitly deny the root user access to resources. You can only use an AWS Organizations service control policy (SCP) to limit the permissions of the root user of a member account.
+
+https://docs.aws.amazon.com/IAM/latest/UserGuide/id_root-user.html
+https://docs.aws.amazon.com/robomaker/latest/dg/auth_access_what-are-policies.html
+
+**Use EventBridge to hookup Health Dashboard to SNS and send notification when there is a service health issue.**
+
+**Review all the questions of each pillars in the Well Architected Tool (No specialized lens)**
+
+**Create an architectural diagram (to the best of your ability) the CI/CD logical pipeline in Lucid Charts**
+
+**Research the technical and service limits of specific services and how they could impact the technical path for technical flexibility. **
+
+**Open a support ticket and request a service limit**
+
+
